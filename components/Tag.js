@@ -1,40 +1,57 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 
 const Tag = ({ label }) => {
-    // Find the label length
-    const labelLength = label.length;
+    // Declare state (pressed or not)
+    const [pressedBool, setPressedBool] = useState(false);
+    const [tagContainerStyle, setTagContainerStyle] = useState(styles.tagContainerDefault);
 
-    // Define constants for the min and max size
-    const minWidth = 80;
-    const maxWidth = 300;
 
-    // Perform caluclation
-    const labelWidth = Math.max(minWidth, Math.min(maxWidth, labelLength * 9));
-
-    const styles = StyleSheet.create({
-        tagContainer: {
-            backgroundColor: '#e0e0e0',
-            paddingVertical: 10,
-            paddingHorizontal: 10,
-            borderRadius: 50,
-            width: labelWidth,
-            justifyContent: 'center',
-            alignItems: 'center',
-            margin: 5,
-        },
-        tagText: {
-            fontSize: 14,
-            fontFamily: 'tagFont',
-        },
-    });
+    // onPress function
+    const pressed = () => {
+        if (pressedBool) {
+            setTagContainerStyle(styles.tagContainerDefault);
+        } else {
+            setTagContainerStyle(styles.tagContainerPressed);
+        }
+        setPressedBool(!pressedBool);
+    }
 
     return (
-        <View style={styles.tagContainer}>
+        <Pressable style={tagContainerStyle} onPress={pressed}>
             <Text style={styles.tagText}>{label}</Text>
-        </View>
+        </Pressable>
     );
 };
+
+const styles = StyleSheet.create({
+    tagContainerDefault: {
+        backgroundColor: '#e0e0e0',
+        paddingVertical: 10,
+        paddingHorizontal: 10,
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 5,
+    },
+    tagContainerPressed: {
+        backgroundColor: '#e0e0e0',
+        paddingVertical: 7,
+        paddingHorizontal: 7,
+        borderRadius: 50,
+        justifyContent: 'center',
+        alignItems: 'center',
+        margin: 5,
+        borderWidth: 3,
+        borderColor: 'black',
+    },
+    tagText: {
+        fontSize: 14,
+        fontWeight: 'bold',
+        //fontFamily: 'tagFont',
+    },
+});
+
 
 export default Tag;
 

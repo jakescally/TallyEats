@@ -7,10 +7,16 @@ const TagGroup = ({ tags, heading }) => {
 
     const styles = StyleSheet.create({
         heading: {
+            marginLeft: 20,
+            marginTop: 15,
             fontSize: 25,
-            fontFamily: 'tagFont'
+            fontWeight: 'bold',
+            fontStyle: 'italic',
+            color: 'white',
+            //fontFamily: 'tagFont'
         },
         group: {
+            marginHorizontal: 30,
             flexDirection: 'row',
             flexWrap: 'wrap',
         },
