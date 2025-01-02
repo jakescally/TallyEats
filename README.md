@@ -1,3 +1,3 @@
-Welcome to my project!
+Welcome to my project.
 
-We are a startup trying to build a food-finder app that targets local businesses and unique stops!
+Here, we are trying build food-finder app that targets local businesses finds unique venues. For example, finding local spots when on vacation in a new city, or finding classic haunts in a college town.
